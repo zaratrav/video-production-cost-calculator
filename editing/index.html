@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Video Editing Cost Calculator</title>
+<link rel="stylesheet" href="style.css">
+    <meta name="google-site-verification" content="PkLa_ViOo6FAHpvh8SacceMb95o9tePRdrqLNBz9X1M" />
+</head>
+<body>
+
+<h1>Video Editing Cost Calculator</h1>
+
+<p>This calculator helps you estimate the cost of this type of video production based on common industry pricing models.</p>
+
+<p>Adjust the inputs to reflect your project scope. Keep in mind that actual pricing may vary depending on location, talent, and production quality.</p>
+
+
+<label>Raw Footage Hours:</label><input id="hours" type="number">
+<label>Editing Rate ($/hour):</label><input id="rate" type="number">
+
+
+<button onclick="calc()">Estimate Cost</button>
+
+<p id="result"></p>
+
+<h3>Explore Other Tools</h3>
+<ul>
+<li><a href="../corporate/index.html">How Much Does a Corporate Video Cost</a></li><li><a href="../animation/index.html">Animation Video Cost Estimator</a></li>
+</ul>
+
+<script>
+function calc(){
+
+let hours=parseFloat(document.getElementById('hours').value)||0;
+let rate=parseFloat(document.getElementById('rate').value)||0;
+let result = hours * rate;
+
+document.getElementById('result').innerText="Estimated Cost: $" + result.toFixed(2);
+}
+</script>
+
+</body>
+</html>

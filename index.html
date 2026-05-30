@@ -21,11 +21,77 @@
         <section class="intro">
             <div class="container">
                 <h2>Plan Your Video & VFX Budget</h2>
+                <h3>Animated price guide 3D VFX cost calculator</h3>
                 <p>
-                    Video production costs vary dramatically based on scope, complexity, and timeline. Without proper budgeting, 
-                    projects overrun or sacrifice quality. These calculators help you estimate realistic costs for corporate videos, 
-                    animations, motion graphics, VFX, and editing—so you can plan confidently and allocate resources effectively.
+                    Video production costs vary dramatically based on scope, complexity, and timeline. Without proper budgeting,
+                    projects overrun or sacrifice quality. These calculators help you estimate realistic costs for corporate videos,
+                    animations, motion graphics, VFX, and editing&mdash;so you can plan confidently and allocate resources effectively.
                 </p>
+
+                <!-- PROJECT COMPLEXITY SCORER -->
+                <div class="pcs-wrapper">
+                    <div class="pcs-header">
+                        <span class="pcs-eyebrow">Quick Budget Scan</span>
+                        <h3 class="pcs-title">What kind of project is this?</h3>
+                        <p class="pcs-sub">4 questions &rarr; instant budget tier</p>
+                    </div>
+
+                    <div class="pcs-body">
+                        <div class="pcs-question" id="pcsQ1">
+                            <p class="pcs-q-label"><span class="pcs-q-num">01</span> Project type</p>
+                            <div class="pcs-pills" data-key="type">
+                                <button class="pcs-pill" data-val="1">Social clip</button>
+                                <button class="pcs-pill" data-val="2">Corp. video</button>
+                                <button class="pcs-pill" data-val="3">Commercial</button>
+                                <button class="pcs-pill" data-val="4">VFX / 3D</button>
+                            </div>
+                        </div>
+
+                        <div class="pcs-question" id="pcsQ2">
+                            <p class="pcs-q-label"><span class="pcs-q-num">02</span> Duration</p>
+                            <div class="pcs-pills" data-key="duration">
+                                <button class="pcs-pill" data-val="1">&lt; 30 sec</button>
+                                <button class="pcs-pill" data-val="2">30&ndash;90 sec</button>
+                                <button class="pcs-pill" data-val="3">2&ndash;5 min</button>
+                                <button class="pcs-pill" data-val="4">5 min+</button>
+                            </div>
+                        </div>
+
+                        <div class="pcs-question" id="pcsQ3">
+                            <p class="pcs-q-label"><span class="pcs-q-num">03</span> Visual quality needed</p>
+                            <div class="pcs-pills" data-key="quality">
+                                <button class="pcs-pill" data-val="1">Basic / internal</button>
+                                <button class="pcs-pill" data-val="2">Polished / brand</button>
+                                <button class="pcs-pill" data-val="3">Broadcast</button>
+                                <button class="pcs-pill" data-val="4">Cinematic / VFX</button>
+                            </div>
+                        </div>
+
+                        <div class="pcs-question" id="pcsQ4">
+                            <p class="pcs-q-label"><span class="pcs-q-num">04</span> Timeline</p>
+                            <div class="pcs-pills" data-key="timeline">
+                                <button class="pcs-pill" data-val="1">4+ weeks</button>
+                                <button class="pcs-pill" data-val="2">2&ndash;4 weeks</button>
+                                <button class="pcs-pill" data-val="3">1&ndash;2 weeks</button>
+                                <button class="pcs-pill" data-val="4">Under 1 week</button>
+                            </div>
+                        </div>
+
+                        <div class="pcs-result" id="pcsResult">
+                            <div class="pcs-result-inner">
+                                <div class="pcs-tier-badge" id="pcsBadge"></div>
+                                <div class="pcs-result-body">
+                                    <p class="pcs-range-label">Estimated budget range</p>
+                                    <p class="pcs-range" id="pcsRange"></p>
+                                    <p class="pcs-desc" id="pcsDesc"></p>
+                                </div>
+                                <button class="pcs-reset" onclick="pcsReset()">&#8635; New scan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PROJECT COMPLEXITY SCORER -->
+
             </div>
         </section>
 
@@ -34,10 +100,10 @@
             <div class="container">
                 <div class="tabs-header">
                     <button class="tab-btn active" onclick="switchTab('video')">
-                        🎬 Video Production Calculator
+                        &#127916; Video Production Calculator
                     </button>
                     <button class="tab-btn" onclick="switchTab('vfx')">
-                        ✨ VFX & Animation Estimator
+                        &#10024; VFX & Animation Estimator
                     </button>
                 </div>
 
@@ -282,35 +348,35 @@
 
                 <h3>Understanding Video Production Costs</h3>
                 <p>
-                    Video production costs break down into three categories: pre-production (planning), production (shooting), and 
-                    post-production (editing). Budget allocation varies by project type. Corporate videos emphasize crew costs; 
+                    Video production costs break down into three categories: pre-production (planning), production (shooting), and
+                    post-production (editing). Budget allocation varies by project type. Corporate videos emphasize crew costs;
                     animations emphasize artist labor; documentaries emphasize shooting days.
                 </p>
 
                 <h3>Cost Factors That Matter Most</h3>
                 <div class="factors-grid">
                     <div class="factor-card">
-                        <h4>📹 Video Duration</h4>
+                        <h4>&#128249; Video Duration</h4>
                         <p>Longer videos require more shooting, editing, and animation time. Budget scales linearly but with economies of scale (e.g., 5-min video costs less per minute than 1-min).</p>
                     </div>
                     <div class="factor-card">
-                        <h4>🎥 Production Complexity</h4>
+                        <h4>&#127909; Production Complexity</h4>
                         <p>Basic interviews are cheap; multi-location shoots, special effects, color grading are expensive. Complexity multiplies all costs (crew, equipment, post-production time).</p>
                     </div>
                     <div class="factor-card">
-                        <h4>👥 Crew Size & Experience</h4>
+                        <h4>&#128101; Crew Size & Experience</h4>
                         <p>Solo freelancer: $500-2,000/day. Professional crew: $3,000-10,000/day. Senior cinematographers/directors command premium rates.</p>
                     </div>
                     <div class="factor-card">
-                        <h4>⚙️ Equipment</h4>
+                        <h4>&#9881;&#65039; Equipment</h4>
                         <p>Basic gear rental: $200-500/day. High-end cinema cameras, drones, rigs: $1,000-5,000+/day. Own equipment = fixed cost.</p>
                     </div>
                     <div class="factor-card">
-                        <h4>🎬 Post-Production Quality</h4>
+                        <h4>&#127916; Post-Production Quality</h4>
                         <p>Quick cuts + music: $500-2,000. Color grading, sound design, VFX: $5,000-50,000+. Motion graphics and custom animation multiply costs.</p>
                     </div>
                     <div class="factor-card">
-                        <h4>⏱️ Timeline/Urgency</h4>
+                        <h4>&#9201;&#65039; Timeline/Urgency</h4>
                         <p>Standard timeline (4+ weeks): baseline cost. Rush (2 weeks): +20-30%. Urgent (1 week): +40-50%. Freelancers charge premiums for tight deadlines.</p>
                     </div>
                 </div>
@@ -357,7 +423,7 @@
                 <h3>When to Hire Professionals vs DIY</h3>
                 <div class="hiring-grid">
                     <div class="hiring-card">
-                        <h4>✅ Hire Professionals If:</h4>
+                        <h4>&#9989; Hire Professionals If:</h4>
                         <ul>
                             <li>Client-facing video (brand matters)</li>
                             <li>Budget > $5,000</li>
@@ -367,10 +433,10 @@
                         </ul>
                     </div>
                     <div class="hiring-card">
-                        <h4>💡 DIY/Freelancer If:</h4>
+                        <h4>&#128161; DIY/Freelancer If:</h4>
                         <ul>
                             <li>Internal/training videos</li>
-                            <li>Budget < $2,000</li>
+                            <li>Budget &lt; $2,000</li>
                             <li>Standard timeline (4+ weeks)</li>
                             <li>Simple requirements (interviews, cuts)</li>
                             <li>Have in-house editing capability</li>
@@ -385,27 +451,27 @@
                 <h2>Related Production Tools & Resources</h2>
                 <div class="tools-grid">
                     <div class="tool-card">
-                        <h4><a href="#">📹 Corporate Video Cost Calculator</a></h4>
+                        <h4><a href="#">&#128249; Corporate Video Cost Calculator</a></h4>
                         <p>Specific estimator for corporate/business video productions.</p>
                     </div>
                     <div class="tool-card">
-                        <h4><a href="#">🎬 Commercial Production Budget</a></h4>
+                        <h4><a href="#">&#127916; Commercial Production Budget</a></h4>
                         <p>Plan budgets for TV/web commercials with detailed cost breakdown.</p>
                     </div>
                     <div class="tool-card">
-                        <h4><a href="#">🎨 Motion Graphics Cost Estimator</a></h4>
+                        <h4><a href="#">&#127912; Motion Graphics Cost Estimator</a></h4>
                         <p>Dedicated tool for motion graphics and animated sequences.</p>
                     </div>
                     <div class="tool-card">
-                        <h4><a href="#">✂️ Video Editing Cost Calculator</a></h4>
+                        <h4><a href="#">&#9986;&#65039; Video Editing Cost Calculator</a></h4>
                         <p>Estimate post-production and editing costs separately.</p>
                     </div>
                     <div class="tool-card">
-                        <h4><a href="#">🎙️ Voice-Over & Audio Cost Guide</a></h4>
+                        <h4><a href="#">&#127897;&#65039; Voice-Over & Audio Cost Guide</a></h4>
                         <p>Pricing for professional voice acting and audio production.</p>
                     </div>
                     <div class="tool-card">
-                        <h4><a href="#">📊 Freelancer Rate Calculator</a></h4>
+                        <h4><a href="#">&#128202; Freelancer Rate Calculator</a></h4>
                         <p>Determine fair rates for video professionals and freelancers.</p>
                     </div>
                 </div>
@@ -419,7 +485,7 @@
                 <div class="faq-item">
                     <h3>How much does a 1-minute video cost?</h3>
                     <p>
-                        $1,000-5,000 for basic quality (DIY or freelancer). $5,000-20,000 for professional quality. 
+                        $1,000-5,000 for basic quality (DIY or freelancer). $5,000-20,000 for professional quality.
                         $20,000-100,000+ for broadcast quality. Depends on location, crew, complexity, and post-production.
                     </p>
                 </div>
@@ -427,7 +493,7 @@
                 <div class="faq-item">
                     <h3>Is 3D animation or 2D animation cheaper?</h3>
                     <p>
-                        2D animation is generally 30-50% cheaper than 3D. Simple 2D: $200-500/sec. Professional 3D: $1,000-3,000/sec. 
+                        2D animation is generally 30-50% cheaper than 3D. Simple 2D: $200-500/sec. Professional 3D: $1,000-3,000/sec.
                         Photoreal 3D/VFX: $3,000-10,000+/sec. But 2D requires skilled artists too; quality varies widely.
                     </p>
                 </div>
@@ -435,7 +501,7 @@
                 <div class="faq-item">
                     <h3>What's included in post-production cost?</h3>
                     <p>
-                        Basic: editing, color correction, music, basic sound. Standard: + transitions, sound design, titles. 
+                        Basic: editing, color correction, music, basic sound. Standard: + transitions, sound design, titles.
                         Premium: + color grading, motion graphics, VFX, custom animation. Premium can be 50% of total budget.
                     </p>
                 </div>
@@ -443,7 +509,7 @@
                 <div class="faq-item">
                     <h3>How much should I budget for revisions?</h3>
                     <p>
-                        Budget 2-3 revision rounds in initial cost. After that, charge $50-200/hour per round. 
+                        Budget 2-3 revision rounds in initial cost. After that, charge $50-200/hour per round.
                         Clear initial brief = fewer revisions. Ambiguous brief = budget 5+ revision rounds.
                     </p>
                 </div>
@@ -451,7 +517,7 @@
                 <div class="faq-item">
                     <h3>Can I use stock footage/music to save money?</h3>
                     <p>
-                        Yes. Stock footage costs $50-500/clip vs $2,000-10,000 for custom shooting. Stock music: $50-500 vs custom composition: $2,000-5,000+. 
+                        Yes. Stock footage costs $50-500/clip vs $2,000-10,000 for custom shooting. Stock music: $50-500 vs custom composition: $2,000-5,000+.
                         Downsides: less unique, potential brand dilution, licensing restrictions.
                     </p>
                 </div>
@@ -459,7 +525,7 @@
                 <div class="faq-item">
                     <h3>What adds the most cost to a video project?</h3>
                     <p>
-                        Crew labor (40%), post-production (30%), equipment (15%), contingency (15%). If you negotiate crew cost or use freelancers, 
+                        Crew labor (40%), post-production (30%), equipment (15%), contingency (15%). If you negotiate crew cost or use freelancers,
                         you can reduce by 30-50%. If you simplify post-production, save another 20-30%.
                     </p>
                 </div>
@@ -467,7 +533,7 @@
                 <div class="faq-item">
                     <h3>Do freelancers cost less than studios?</h3>
                     <p>
-                        Yes. Freelancers typically cost 30-60% less than studios because they have lower overhead. Trade-off: less availability, 
+                        Yes. Freelancers typically cost 30-60% less than studios because they have lower overhead. Trade-off: less availability,
                         longer turnaround, project management required. Studios = faster, higher quality, higher cost.
                     </p>
                 </div>
@@ -475,7 +541,7 @@
                 <div class="faq-item">
                     <h3>What's a realistic turnaround time?</h3>
                     <p>
-                        Simple video: 1-2 weeks. Standard video: 3-4 weeks. Complex video with VFX: 6-8 weeks. 
+                        Simple video: 1-2 weeks. Standard video: 3-4 weeks. Complex video with VFX: 6-8 weeks.
                         Rush jobs (1 week): +20-50% cost premium. Always add 1-2 weeks buffer.
                     </p>
                 </div>

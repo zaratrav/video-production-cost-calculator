@@ -1,16 +1,13 @@
 // ===== TAB SWITCHING =====
 
 function switchTab(tabName) {
-    // Hide all tabs
     document.getElementById('videoTab').classList.remove('active');
     document.getElementById('vfxTab').classList.remove('active');
-    
-    // Remove active from all buttons
-    document.querySelectorAll('.tab-btn').forEach(btn => {
+
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
         btn.classList.remove('active');
     });
-    
-    // Show selected tab
+
     if (tabName === 'video') {
         document.getElementById('videoTab').classList.add('active');
         document.querySelectorAll('.tab-btn')[0].classList.add('active');
@@ -23,55 +20,49 @@ function switchTab(tabName) {
 // ===== VIDEO PRODUCTION CALCULATOR =====
 
 function calculateVideo() {
-    const videoType = document.getElementById('videoType').value;
-    const duration = parseFloat(document.getElementById('videoDuration').value) || 0;
-    const complexity = document.getElementById('videoComplexity').value;
-    const crewSize = document.getElementById('crewSize').value;
-    const postProduction = document.getElementById('postProduction').value;
-    const shootingDays = parseFloat(document.getElementById('shootingDays').value) || 0;
+    var videoType = document.getElementById('videoType').value;
+    var duration = parseFloat(document.getElementById('videoDuration').value) || 0;
+    var complexity = document.getElementById('videoComplexity').value;
+    var crewSize = document.getElementById('crewSize').value;
+    var postProduction = document.getElementById('postProduction').value;
+    var shootingDays = parseFloat(document.getElementById('shootingDays').value) || 0;
 
     if (!duration || !shootingDays) return;
 
-    // Base rates by crew size (daily)
-    const crewRates = {
+    var crewRates = {
         'solo': 800,
         'small': 2500,
         'medium': 5000,
         'large': 8000
     };
 
-    // Complexity multipliers
-    const complexityMultipliers = {
+    var complexityMultipliers = {
         'basic': 1,
         'medium': 1.4,
         'high': 2.0
     };
 
-    // Post-production base rates (per minute)
-    const postRates = {
+    var postRates = {
         'basic': 200,
         'standard': 500,
         'premium': 1500
     };
 
-    // Equipment rental (daily)
-    const equipmentCosts = {
+    var equipmentCosts = {
         'solo': 200,
         'small': 500,
         'medium': 1200,
         'large': 2000
     };
 
-    // Calculate components
-    const crewCost = crewRates[crewSize] * shootingDays * complexityMultipliers[complexity];
-    const equipmentCost = equipmentCosts[crewSize] * shootingDays;
-    const postCost = postRates[postProduction] * duration;
-    const subtotal = crewCost + equipmentCost + postCost;
-    const contingency = subtotal * 0.15;
-    const totalCost = subtotal + contingency;
-    const costPerMinute = totalCost / duration;
+    var crewCost = crewRates[crewSize] * shootingDays * complexityMultipliers[complexity];
+    var equipmentCost = equipmentCosts[crewSize] * shootingDays;
+    var postCost = postRates[postProduction] * duration;
+    var subtotal = crewCost + equipmentCost + postCost;
+    var contingency = subtotal * 0.15;
+    var totalCost = subtotal + contingency;
+    var costPerMinute = totalCost / duration;
 
-    // Display results
     document.getElementById('crewCost').textContent = '$' + Math.round(crewCost).toLocaleString();
     document.getElementById('equipmentCost').textContent = '$' + Math.round(equipmentCost).toLocaleString();
     document.getElementById('postCost').textContent = '$' + Math.round(postCost).toLocaleString();
@@ -79,28 +70,27 @@ function calculateVideo() {
     document.getElementById('totalCostVideo').textContent = '$' + Math.round(totalCost).toLocaleString();
     document.getElementById('costPerMinVideo').textContent = '$' + Math.round(costPerMinute).toLocaleString();
 
-    // Notes
-    const notes = [];
+    var notes = [];
     if (complexity === 'high') {
-        notes.push('✓ High complexity detected: Budget includes advanced equipment and effects');
+        notes.push('High complexity detected: Budget includes advanced equipment and effects');
     }
     if (crewSize === 'solo') {
-        notes.push('✓ Solo production: Ensure single person can handle all roles');
+        notes.push('Solo production: Ensure single person can handle all roles');
     }
     if (shootingDays > 5) {
-        notes.push('✓ Multiple shooting days: Budget allows for setup/teardown time');
+        notes.push('Multiple shooting days: Budget allows for setup/teardown time');
     }
     if (postProduction === 'premium') {
-        notes.push('✓ Premium post-production: Includes color grading and custom motion graphics');
+        notes.push('Premium post-production: Includes color grading and custom motion graphics');
     }
-    
-    const notesList = document.getElementById('videoNotes');
+
+    var notesList = document.getElementById('videoNotes');
     notesList.innerHTML = '';
-    notes.forEach(note => {
-        const li = document.createElement('li');
-        li.textContent = note;
+    for (var i = 0; i < notes.length; i++) {
+        var li = document.createElement('li');
+        li.textContent = notes[i];
         notesList.appendChild(li);
-    });
+    }
 
     document.getElementById('videoResults').style.display = 'block';
 }
@@ -119,17 +109,16 @@ function setVideoScenario(type, duration, complexity, crew, post, days) {
 // ===== VFX & ANIMATION CALCULATOR =====
 
 function calculateVFX() {
-    const vfxType = document.getElementById('vfxType').value;
-    const duration = parseInt(document.getElementById('vfxDuration').value) || 0;
-    const complexity = document.getElementById('vfxComplexity').value;
-    const revisions = parseInt(document.getElementById('vfxRevisions').value) || 1;
-    const teamSize = document.getElementById('vfxTeam').value;
-    const deadline = document.getElementById('vfxDeadline').value;
+    var vfxType = document.getElementById('vfxType').value;
+    var duration = parseInt(document.getElementById('vfxDuration').value) || 0;
+    var complexity = document.getElementById('vfxComplexity').value;
+    var revisions = parseInt(document.getElementById('vfxRevisions').value) || 1;
+    var teamSize = document.getElementById('vfxTeam').value;
+    var deadline = document.getElementById('vfxDeadline').value;
 
     if (!duration) return;
 
-    // Base cost per second by type and complexity
-    const baseCosts = {
+    var baseCosts = {
         '2d-animation': {
             'simple': 150,
             'moderate': 300,
@@ -174,39 +163,31 @@ function calculateVFX() {
         }
     };
 
-    // Team size multiplier
-    const teamMultipliers = {
+    var teamMultipliers = {
         'freelance': 1,
         'small': 1.2,
         'medium': 1.4,
         'large': 1.6
     };
 
-    // Deadline premium
-    const deadlinePremium = {
+    var deadlinePremium = {
         'standard': 0,
         'rush': 0.20,
         'urgent': 0.40
     };
 
-    // Calculate base cost
-    const baseCostPerSec = baseCosts[vfxType][complexity] || 500;
-    const teamMultiplier = teamMultipliers[teamSize];
-    const baseAnimationCost = baseCostPerSec * duration * teamMultiplier;
-    
-    // Revisions cost (10% per revision)
-    const revisionCost = baseAnimationCost * 0.10 * (revisions - 1);
-    
-    // Urgency premium
-    const urgencyCost = baseAnimationCost * deadlinePremium[deadline];
-    
-    // Contingency
-    const subtotal = baseAnimationCost + revisionCost + urgencyCost;
-    const contingency = subtotal * 0.10;
-    const totalCost = subtotal + contingency;
-    const costPerSec = totalCost / duration;
+    var baseCostPerSec = (baseCosts[vfxType] && baseCosts[vfxType][complexity]) ? baseCosts[vfxType][complexity] : 500;
+    var teamMultiplier = teamMultipliers[teamSize];
+    var baseAnimationCost = baseCostPerSec * duration * teamMultiplier;
 
-    // Display results
+    var revisionCost = baseAnimationCost * 0.10 * (revisions - 1);
+    var urgencyCost = baseAnimationCost * deadlinePremium[deadline];
+
+    var subtotal = baseAnimationCost + revisionCost + urgencyCost;
+    var contingency = subtotal * 0.10;
+    var totalCost = subtotal + contingency;
+    var costPerSec = totalCost / duration;
+
     document.getElementById('animationCost').textContent = '$' + Math.round(baseAnimationCost).toLocaleString();
     document.getElementById('revisionCost').textContent = '$' + Math.round(revisionCost).toLocaleString();
     document.getElementById('urgencyCost').textContent = '$' + Math.round(urgencyCost).toLocaleString();
@@ -214,31 +195,30 @@ function calculateVFX() {
     document.getElementById('totalCostVFX').textContent = '$' + Math.round(totalCost).toLocaleString();
     document.getElementById('costPerSecVFX').textContent = '$' + Math.round(costPerSec).toLocaleString();
 
-    // Notes
-    const notes = [];
+    var notes = [];
     if (complexity === 'premium') {
-        notes.push('✓ Premium quality detected: Includes photoreal rendering and cinematic quality');
+        notes.push('Premium quality detected: Includes photoreal rendering and cinematic quality');
     }
     if (deadline !== 'standard') {
-        notes.push(`✓ ${deadline === 'rush' ? '20' : '40'}% urgency premium applied`);
+        notes.push((deadline === 'rush' ? '20' : '40') + '% urgency premium applied');
     }
     if (revisions > 2) {
-        notes.push(`✓ ${revisions} revision rounds included: Additional revisions cost extra`);
+        notes.push(revisions + ' revision rounds included: Additional revisions cost extra');
     }
     if (teamSize === 'large') {
-        notes.push('✓ Large studio team: Higher cost but faster turnaround and quality');
+        notes.push('Large studio team: Higher cost but faster turnaround and quality');
     }
     if (duration > 300) {
-        notes.push('✓ Long-form animation: Consider breaking into episodes to optimize cost');
+        notes.push('Long-form animation: Consider breaking into episodes to optimize cost');
     }
-    
-    const notesList = document.getElementById('vfxNotes');
+
+    var notesList = document.getElementById('vfxNotes');
     notesList.innerHTML = '';
-    notes.forEach(note => {
-        const li = document.createElement('li');
-        li.textContent = note;
+    for (var i = 0; i < notes.length; i++) {
+        var li = document.createElement('li');
+        li.textContent = notes[i];
         notesList.appendChild(li);
-    });
+    }
 
     document.getElementById('vfxResults').style.display = 'block';
 }
@@ -254,8 +234,126 @@ function setVFXScenario(type, duration, complexity, revisions, team, deadline) {
     document.getElementById('vfxResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
+// ===== PROJECT COMPLEXITY SCORER =====
+
+(function () {
+
+    var pcsAnswers = {};
+
+    var pcsTiers = [
+        {
+            min: 4,
+            max: 7,
+            tier: 'Budget',
+            cls: 'tier-budget',
+            range: '$1,000 - $5,000',
+            desc: 'Freelancer or small crew. Good for internal use, social content, and simple interviews.'
+        },
+        {
+            min: 8,
+            max: 11,
+            tier: 'Mid-Range',
+            cls: 'tier-mid',
+            range: '$5,000 - $25,000',
+            desc: 'Professional crew and post-production. Suitable for brand videos, commercials, and standard animations.'
+        },
+        {
+            min: 12,
+            max: 13,
+            tier: 'Premium',
+            cls: 'tier-premium',
+            range: '$25,000 - $100,000',
+            desc: 'Broadcast-quality production. Multi-location shoots, color grading, motion graphics, advanced VFX.'
+        },
+        {
+            min: 14,
+            max: 16,
+            tier: 'Cinematic',
+            cls: 'tier-cinematic',
+            range: '$100,000+',
+            desc: 'High-end commercial or cinematic VFX. Full studio team, photoreal CGI, tight deadlines.'
+        }
+    ];
+
+    function pcsInit() {
+        var groups = document.querySelectorAll('.pcs-pills');
+        for (var i = 0; i < groups.length; i++) {
+            (function (group) {
+                var pills = group.querySelectorAll('.pcs-pill');
+                for (var j = 0; j < pills.length; j++) {
+                    pills[j].addEventListener('click', function () {
+                        var siblings = group.querySelectorAll('.pcs-pill');
+                        for (var k = 0; k < siblings.length; k++) {
+                            siblings[k].classList.remove('selected');
+                        }
+                        this.classList.add('selected');
+                        pcsAnswers[group.getAttribute('data-key')] = parseInt(this.getAttribute('data-val'), 10);
+                        group.closest('.pcs-question').classList.add('answered');
+                        pcsCheck();
+                    });
+                }
+            })(groups[i]);
+        }
+    }
+
+    function pcsCheck() {
+        var keys = ['type', 'duration', 'quality', 'timeline'];
+        for (var i = 0; i < keys.length; i++) {
+            if (!pcsAnswers[keys[i]]) return;
+        }
+        var score = pcsAnswers.type + pcsAnswers.duration + pcsAnswers.quality + pcsAnswers.timeline;
+        pcsShow(score);
+    }
+
+    function pcsShow(score) {
+        var tier = pcsTiers[0];
+        for (var i = 0; i < pcsTiers.length; i++) {
+            if (score >= pcsTiers[i].min && score <= pcsTiers[i].max) {
+                tier = pcsTiers[i];
+                break;
+            }
+        }
+
+        var badge  = document.getElementById('pcsBadge');
+        var range  = document.getElementById('pcsRange');
+        var desc   = document.getElementById('pcsDesc');
+        var result = document.getElementById('pcsResult');
+
+        if (!badge || !range || !desc || !result) return;
+
+        badge.className   = 'pcs-tier-badge ' + tier.cls;
+        badge.textContent = tier.tier;
+        range.textContent = tier.range;
+        desc.textContent  = tier.desc;
+
+        result.classList.add('visible');
+        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    window.pcsReset = function () {
+        pcsAnswers = {};
+
+        var pills = document.querySelectorAll('.pcs-pill');
+        for (var i = 0; i < pills.length; i++) {
+            pills[i].classList.remove('selected');
+        }
+
+        var questions = document.querySelectorAll('.pcs-question');
+        for (var i = 0; i < questions.length; i++) {
+            questions[i].classList.remove('answered');
+        }
+
+        var result = document.getElementById('pcsResult');
+        if (result) result.classList.remove('visible');
+    };
+
+    document.addEventListener('DOMContentLoaded', pcsInit);
+
+})();
+
+// ===== INITIALIZE =====
+
+document.addEventListener('DOMContentLoaded', function () {
     calculateVideo();
     calculateVFX();
 });
